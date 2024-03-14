@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { ImageService } from '../services/image.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginPage implements OnInit {
   showPassword: boolean = false;
 
 
-  constructor(private router: Router, private toastCtrl: ToastController) { }
+  constructor(private router: Router, private toastCtrl: ToastController, private imageService: ImageService) { }
 
   ngOnInit() {}
 
@@ -34,6 +35,15 @@ export class LoginPage implements OnInit {
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+  }
+
+  selectImage() {
+    this.imageService.selectAndStoreImage().then((imageData) => {
+      // Use the imageData as needed, e.g., display in an <img> tag
+      console.log('imageData', imageData);
+    }).catch((error) => {
+      console.error('Error selecting image:', error);
+    });
   }
 
 

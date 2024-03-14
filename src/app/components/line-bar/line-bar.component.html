@@ -1,8 +1,11 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Charts
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-avatar>
+        <img [src]="avatarUrl" *ngIf="avatarUrl" />
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title>{{ username }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +13,7 @@
   <div class="ion-padding">
     <ion-card>
       <ion-card-header>
-        Line Chart
+       Acciones
       </ion-card-header>
       <ion-card-content>
         <canvas #lineCanvas></canvas>
@@ -18,6 +21,12 @@
     </ion-card>
   </div>
   <div>
-    <button (click)="updateChart()">Click me!!!</button>
+    <ion-button (click)="updateChart('Lunes')" [class.selected]="selectedDay !== 'Lunes'">Lunes</ion-button>
+  <ion-button (click)="updateChart('Martes')" [class.selected]="selectedDay !== 'Martes'">Martes</ion-button>
+  <ion-button (click)="updateChart('Miércoles')" [class.selected]="selectedDay !== 'Miércoles'">Miércoles</ion-button>
+  <ion-button (click)="updateChart('Jueves')" [class.selected]="selectedDay !== 'Jueves'">Jueves</ion-button>
+  <ion-button (click)="updateChart('Viernes')" [class.selected]="selectedDay !== 'Viernes'">Viernes</ion-button>
+  <ion-button (click)="updateChart('Sábado')" [class.selected]="selectedDay !== 'Sábado'">Sábado</ion-button>
+  <ion-button (click)="updateChart('Domingo')" [class.selected]="selectedDay !== 'Domingo'">Domingo</ion-button>
   </div>
 </ion-content>

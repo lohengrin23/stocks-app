@@ -14,6 +14,8 @@ export class LineBarComponent implements AfterViewInit {
   @ViewChild('lineCanvas') private lineCanvas: ElementRef;
   private chart: any;
   private chartInitialized = false;
+  username = 'admin';
+  selectedDay: string = 'Lunes'; 
 
  
   constructor() { }
@@ -36,10 +38,10 @@ export class LineBarComponent implements AfterViewInit {
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
         datasets: [{
-          label: 'My Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          label: 'Lunes',
+          data: [65, 59, 80, 81, 56, 55, 40, 50, 60],
           fill: false,
           borderColor: 'rgb(75, 192, 192)',
           tension: 0.1
@@ -48,9 +50,43 @@ export class LineBarComponent implements AfterViewInit {
     });
   }
 
-  updateChart(){
-    const newData = [45, 62, 75, 92, 78, 65, 55];
+  updateChart(day: string){
+
+    
+    /*const newData = [45, 62, 75, 92, 78, 65, 55];
     this.chart.data.datasets[0].data = newData;
+    this.chart.update();*/
+
+    let newData: number[];
+    this.selectedDay = day;
+    switch (day) {
+      case 'Lunes':
+        newData = [65, 59, 80, 81, 56, 55, 40, 50, 60];
+        break;
+      case 'Martes':
+        newData = [55, 62, 85, 82, 88, 75, 65, 80,75];
+        break;
+      case 'Miércoles':
+        newData = [35, 52, 65, 82, 98, 85, 75, 46, 55];
+        break;
+      case 'Jueves':
+        newData = [65, 72, 85, 92, 88, 75, 65, 40, 20];
+        break;
+      case 'Viernes':
+        newData = [75, 82, 95, 102, 108, 95, 85, 26];
+        break;
+      case 'Sábado':
+        newData = [85, 92, 105, 112, 118, 105, 95, 90, 91];
+        break;
+      case 'Domingo':
+        newData = [95, 102, 115, 122, 128, 115, 105, 110, 120];
+        break;
+      default:
+        newData = [];
+    }
+
+    this.chart.data.datasets[0].data = newData;
+    this.chart.data.datasets[0].label = this.selectedDay;
     this.chart.update();
   }
 
