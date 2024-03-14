@@ -16,6 +16,7 @@ export class LineBarComponent implements AfterViewInit {
   private chartInitialized = false;
   username = 'admin';
   selectedDay: string = 'Lunes'; 
+  fechaDia = 'Lunes, 24 de enero de 2022';
 
  
   constructor() { }
@@ -62,24 +63,31 @@ export class LineBarComponent implements AfterViewInit {
     switch (day) {
       case 'Lunes':
         newData = [65, 59, 80, 81, 56, 55, 40, 50, 60];
+        this.fechaDia = 'Lunes, 24 de enero de 2022'
         break;
       case 'Martes':
         newData = [55, 62, 85, 82, 88, 75, 65, 80,75];
+        this.fechaDia = 'Martes, 25 de enero de 2022'
         break;
       case 'Miércoles':
         newData = [35, 52, 65, 82, 98, 85, 75, 46, 55];
+        this.fechaDia = 'Miércoles, 26 de enero de 2022'
         break;
       case 'Jueves':
         newData = [65, 72, 85, 92, 88, 75, 65, 40, 20];
+        this.fechaDia = 'Jueves, 27 de enero de 2022'
         break;
       case 'Viernes':
         newData = [75, 82, 95, 102, 108, 95, 85, 26];
+        this.fechaDia = 'Viernes, 28 de enero de 2022'
         break;
       case 'Sábado':
         newData = [85, 92, 105, 112, 118, 105, 95, 90, 91];
+        this.fechaDia = 'Sábado, 29 de enero de 2022'
         break;
       case 'Domingo':
         newData = [95, 102, 115, 122, 128, 115, 105, 110, 120];
+        this.fechaDia = 'Domingo, 30 de enero de 2022'
         break;
       default:
         newData = [];
