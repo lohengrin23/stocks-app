@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 //import { Chart } from 'chart.js';
 import Chart from 'chart.js/auto';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 
 
@@ -17,11 +18,17 @@ export class LineBarComponent implements AfterViewInit {
   username = 'admin';
   selectedDay: string = 'Lunes'; 
   fechaDia = 'Lunes, 24 de enero de 2022';
+  private timer: any;
 
  
-  constructor() { }
+  constructor(private localNotifications: LocalNotifications) {
+    this.localNotifications.requestPermission();
+   }
 
   ngOnInit() {
+     this.timer = setInterval(() => {
+      this.triggerNotification()
+    }, 60000); 
   }
 
   ngAfterViewInit() {
@@ -32,7 +39,18 @@ export class LineBarComponent implements AfterViewInit {
 
   }
 
- 
+  triggerNotification(){
+    console.log('notification');
+    
+    const notif = this.localNotifications.schedule({
+      text: 'Tiene nueva información acerca de nuestra empresa',
+      foreground: false,
+
+    });
+    console.log('notif',notif);
+    alert(`notif: ${JSON.stringify(notif)}`);
+    
+  }
 
   createLineChart() {
     const ctx = this.lineCanvas.nativeElement.getContext('2d');

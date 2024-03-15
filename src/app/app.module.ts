@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,7 +33,8 @@ import { FilePath } from '@ionic-native/file-path/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ImagePicker,
     File,
-    FilePath
+    FilePath,
+    LocalNotifications
   ],
   bootstrap: [AppComponent]
 })

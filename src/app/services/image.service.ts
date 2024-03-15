@@ -20,7 +20,7 @@ export class ImageService {
                 const reader = new FileReader();
                 reader.onloadend = () => {
                   const imageData = reader.result as string;
-                  localStorage.setItem('avatar', imageData)
+                  // Store imageData wherever you need, e.g., local storage or SQLite
                   resolve(imageData);
                 };
                 reader.readAsDataURL(file);

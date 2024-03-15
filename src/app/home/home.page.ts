@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,28 +9,23 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
   username = 'admin';
+  private timer: any;
  
 
-  constructor(
-   
-  ) {
-
+  constructor(/*private localNotifications: LocalNotifications,*/ public platform: Platform) {
+    //this.localNotifications.requestPermission();
   }
 
-  ionViewWillEnter() {
- 
+  ngAfterViewInit() {
   }
 
-  filterContacts(event: any) {
-    let selectedCategory = event.detail.value;
- 
-
-    this.loadContacts(selectedCategory);
+  ngOnInit() {
+    
+  
   }
 
-  loadContacts(category: string) {
-   
-  }
+
+  
 
   
 }
