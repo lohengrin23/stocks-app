@@ -19,13 +19,17 @@ export class LineBarComponent implements AfterViewInit {
   selectedDay: string = 'Lunes'; 
   fechaDia = 'Lunes, 24 de enero de 2022';
   private timer: any;
+  avatarUrl = './assets/avatar.png';
 
  
   constructor(private localNotifications: LocalNotifications) {
     this.localNotifications.requestPermission();
    }
 
-  ngOnInit() {
+  async ngOnInit() {
+
+    const img = await localStorage.getItem('avatar');
+    if(img) this.avatarUrl = img;
      this.timer = setInterval(() => {
       this.triggerNotification()
     }, 60000); 
@@ -48,7 +52,6 @@ export class LineBarComponent implements AfterViewInit {
 
     });
     console.log('notif',notif);
-    alert(`notif: ${JSON.stringify(notif)}`);
     
   }
 
@@ -70,11 +73,6 @@ export class LineBarComponent implements AfterViewInit {
   }
 
   updateChart(day: string){
-
-    
-    /*const newData = [45, 62, 75, 92, 78, 65, 55];
-    this.chart.data.datasets[0].data = newData;
-    this.chart.update();*/
 
     let newData: number[];
     this.selectedDay = day;

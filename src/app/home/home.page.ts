@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Platform } from '@ionic/angular';
 
 @Component({
@@ -12,9 +11,7 @@ export class HomePage {
   private timer: any;
  
 
-  constructor(/*private localNotifications: LocalNotifications,*/ public platform: Platform) {
-    //this.localNotifications.requestPermission();
-  }
+  constructor(public platform: Platform) {}
 
   ngAfterViewInit() {
   }

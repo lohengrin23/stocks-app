@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
     if (this.username === 'admin' && this.password === 'admin') {
       this.router.navigate(['/home']);
     } else {
-      console.log('Invalid username or password');
+      console.log('Usuario o contraseña inválidas');
       const toast = await this.toastCtrl.create({
         message: 'Usuario o contraseña inválidas',
         duration: 3000
@@ -44,8 +44,12 @@ export class LoginPage implements OnInit {
     this.selectAndStoreImage().then((imageData) => {
       
       console.log('imageData', imageData);
-    }).catch((error) => {
-      alert(`Error selecting image: ${error}`)
+    }).catch(async (error) => {
+      const toast = await this.toastCtrl.create({
+        message: `Error al cargar la imagen: ${JSON.stringify(error)}`,
+        duration: 3000
+      });
+      toast.present();
       console.error('Error selecting image:', error);
     });
   }
@@ -61,6 +65,7 @@ export class LoginPage implements OnInit {
                 const reader = new FileReader();
                 reader.onloadend = () => {
                   const imageData = reader.result as string;
+                  localStorage.setItem('avatar', imageData)
                 
                   resolve(imageData);
                 };

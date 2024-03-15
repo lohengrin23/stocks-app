@@ -36,15 +36,6 @@ export class AppComponent {
       foreground: true,
     })
 
-    /*for (let i = 1; i <= 24; i++) {
-      const nextHour = new Date(now.getTime() + i * 3600 * 1000); // Add i hours
-      this.localNotifications.schedule({
-        text: 'Tiene nueva información acerca de nuestra empresa', // Message to display
-        foreground: true, // Display notification when app is in foreground (optional)
-        trigger: { at: nextHour } // Schedule next notification at next hour
-      });
-    }*/
-
     for (let i = 1; i <= 60; i++) {
       const nextMinute = new Date(now.getTime() + i * 60 * 1000); // Add i minutes
       console.log('notification');
