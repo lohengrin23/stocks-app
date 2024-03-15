@@ -32,19 +32,11 @@ export class AppComponent {
     console.log('notification first');
     const now = new Date();
     this.localNotifications.schedule({
+      id: 1,
       text: 'Tiene nueva información acerca de nuestra empresa',
-      foreground: true,
-    })
-
-    for (let i = 1; i <= 60; i++) {
-      const nextMinute = new Date(now.getTime() + i * 60 * 1000); // Add i minutes
-      console.log('notification');
-      
-      this.localNotifications.schedule({
-        text: 'Tiene nueva información acerca de nuestra empresa', // Message to display
-        foreground: true, // Display notification when app is in foreground (optional)
-        trigger: { at: nextMinute } // Schedule next notification at next minute
-      });
-    }
+      launch: true,
+      vibrate: true,
+      data: {data: 'data'}
+    });
   }
 }

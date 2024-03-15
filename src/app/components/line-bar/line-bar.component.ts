@@ -45,11 +45,12 @@ export class LineBarComponent implements AfterViewInit {
 
   triggerNotification(){
     console.log('notification');
-    
     const notif = this.localNotifications.schedule({
+      id: 1,
       text: 'Tiene nueva información acerca de nuestra empresa',
-      foreground: false,
-
+      launch: true,
+      vibrate: true,
+      data: {data: 'data'}
     });
     console.log('notif',notif);
     

@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
         duration: 3000
       });
       toast.present();
-      console.error('Error selecting image:', error);
+      console.error('Error selecting image:', JSON.stringify(error));
     });
   }
 
